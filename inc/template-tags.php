@@ -165,7 +165,6 @@ if ( ! function_exists( 'wpre_comment' ) ) :
  * Used as a callback by wp_list_comments() for displaying the comments.
  */
 function wpre_comment( $comment, $args, $depth ) {
-	$GLOBALS['comment'] = $comment;
 
 	if ( 'pingback' == $comment->comment_type || 'trackback' == $comment->comment_type ) : ?>
 
@@ -186,7 +185,7 @@ function wpre_comment( $comment, $args, $depth ) {
 					<?php printf( '%s', sprintf( '<cite class="fn">%s</cite>', get_comment_author_link() ) ); ?>
 					<a href="<?php echo esc_url( get_comment_link( $comment->comment_ID ) ); ?>">
 						<time datetime="<?php comment_time( 'c' ); ?>">
-							<?php printf( _x( '%1$s', '1: date', 'wp-real-estate' ), get_comment_date() ); ?>
+							<?php printf(  '%1$s',  get_comment_date() ); ?>
 						</time>
 					</a>
 				</div><!-- .comment-metadata -->

@@ -1,5 +1,9 @@
 ChangeLog
 =========
+Veraion 1.0.7
+
+    i) Featured Area Custom Link Bug Fixed
+    ii) Header Content Button URL Bug Fixed
 
 Version 1.0.5
 
