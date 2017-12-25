@@ -1,5 +1,10 @@
 ChangeLog
 =========
+Veraion 1.0.8
+
+    i) Featured Area bug fixed on mobile screen.
+    ii) Featured News bug fixed on mobile screen.
+
 Veraion 1.0.7
 
     i) Featured Area Custom Link Bug Fixed
