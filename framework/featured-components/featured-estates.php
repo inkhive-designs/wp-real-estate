@@ -1,5 +1,5 @@
 <?php if ( get_theme_mod('wpre_fe_enable') && is_front_page() ) : ?>
-<div id="featured-estates" class="container-fluid featured-area">
+<div id="featured-estates" class="container container-fluid featured-area">
 	<?php if (get_theme_mod('wpre_fe_title')) : ?>
 		<div class="section-title title-font container">
 			<?php echo esc_html( get_theme_mod('wpre_fe_title' ) ) ?>

@@ -3,66 +3,16 @@
  * @package wpre, Copyright Rohit Tripathi, rohitink.com
  * This file contains Custom Theme Related Functions.
  */
- 
- 
-class Wpre_Menu_With_Description extends Walker_Nav_Menu {
-	function start_el(&$output, $item, $depth = 0, $args = array(), $id = 0) {
-		global $wp_query;
-		$indent = ( $depth ) ? str_repeat( "\t", $depth ) : '';
-		
-		$class_names = $value = '';
 
-		$classes = empty( $item->classes ) ? array() : (array) $item->classes;
+//Import Admin Modules
+require get_template_directory() . '/framework/admin-modules/admin_styles.php';
+require get_template_directory() . '/framework/admin-modules/register_styles.php';
+require get_template_directory() . '/framework/admin-modules/theme_setup.php';
+require get_template_directory() . '/framework/admin-modules/register_widgets.php';
+require get_template_directory() . '/framework/admin-modules/thumbnail_placeholder.php';
+require get_template_directory() . '/framework/admin-modules/excerpt_length.php';
+require get_template_directory() . '/framework/admin-modules/nav_walkers.php';
 
-		$class_names = join( ' ', apply_filters( 'nav_menu_css_class', array_filter( $classes ), $item ) );
-		$class_names = ' class="' . esc_attr( $class_names ) . '"';
-
-		$output .= $indent . '<li id="menu-item-'. $item->ID . '"' . $value . $class_names .'>';
-
-		$fontIcon = ! empty( $item->attr_title ) ? ' <i class="fa ' . esc_attr( $item->attr_title ) .'">' : '';
-		$attributes = ! empty( $item->target ) ? ' target="' . esc_attr( $item->target ) .'"' : '';
-		$attributes .= ! empty( $item->xfn ) ? ' rel="' . esc_attr( $item->xfn ) .'"' : '';
-		$attributes .= ! empty( $item->url ) ? ' href="' . esc_attr( $item->url ) .'"' : '';
-
-		$item_output = $args->before;
-		$item_output .= '<a'. $attributes .'>'.$fontIcon.'</i>';
-		$item_output .= $args->link_before . apply_filters( 'the_title', $item->title, $item->ID ) . $args->link_after;
-		$item_output .= '<br /><span class="menu-desc">' . $item->description . '</span>';
-		$item_output .= '</a>';
-		$item_output .= $args->after;
-
-		$output .= apply_filters( 'walker_nav_menu_start_el', $item_output, $item, $depth, $args, $id );
-	}
-}
-
-class Wpre_Menu_With_Icon extends Walker_Nav_Menu {
-	function start_el(&$output, $item, $depth = 0, $args = array(), $id = 0) {
-		global $wp_query;
-		$indent = ( $depth ) ? str_repeat( "\t", $depth ) : '';
-		
-		$class_names = $value = '';
-
-		$classes = empty( $item->classes ) ? array() : (array) $item->classes;
-
-		$class_names = join( ' ', apply_filters( 'nav_menu_css_class', array_filter( $classes ), $item ) );
-		$class_names = ' class="' . esc_attr( $class_names ) . '"';
-
-		$output .= $indent . '<li id="menu-item-'. $item->ID . '"' . $value . $class_names .'>';
-
-		$fontIcon = ! empty( $item->attr_title ) ? ' <i class="fa ' . esc_attr( $item->attr_title ) .'">' : '';
-		$attributes = ! empty( $item->target ) ? ' target="' . esc_attr( $item->target ) .'"' : '';
-		$attributes .= ! empty( $item->xfn ) ? ' rel="' . esc_attr( $item->xfn ) .'"' : '';
-		$attributes .= ! empty( $item->url ) ? ' href="' . esc_attr( $item->url ) .'"' : '';
-
-		$item_output = $args->before;
-		$item_output .= '<a'. $attributes .'>'.$fontIcon.'</i>';
-		$item_output .= $args->link_before . apply_filters( 'the_title', $item->title, $item->ID ) . $args->link_after;
-		$item_output .= '</a>';
-		$item_output .= $args->after;
-
-		$output .= apply_filters( 'walker_nav_menu_start_el', $item_output, $item, $depth, $args, $id );
-	}
-}
 
 /*
  * Pagination Function. Implements core paginate_links function.
@@ -70,128 +20,6 @@ class Wpre_Menu_With_Icon extends Walker_Nav_Menu {
 function wpre_pagination() {
 	the_posts_pagination( array( 'mid_size' => 2 ) );
 }
-
-/*
-** Customizer Controls 
-*/
-if (class_exists('WP_Customize_Control')) {
-	class Wpre_WP_Customize_Category_Control extends WP_Customize_Control {
-        /**
-         * Render the control's content.
-         */
-        public function render_content() {
-            $dropdown = wp_dropdown_categories(
-                array(
-                    'name'              => '_customize-dropdown-categories-' . $this->id,
-                    'echo'              => 0,
-                    'show_option_none'  => __( '&mdash; Select &mdash;', 'wp-real-estate' ),
-                    'option_none_value' => '0',
-                    'selected'          => $this->value(),
-                )
-            );
- 
-            $dropdown = str_replace( '<select', '<select ' . $this->get_link(), $dropdown );
- 
-            printf(
-                '<label class="customize-control-select"><span class="customize-control-title">%s</span> %s</label>',
-                $this->label,
-                $dropdown
-            );
-        }
-    }
-} 
-
-if ( class_exists('WP_Customize_Control') && class_exists('woocommerce') ) {
-	class Wpre_WP_Customize_Product_Category_Control extends WP_Customize_Control {
-        /**
-         * Render the control's content.
-         */
-        public function render_content() {
-            $dropdown = wp_dropdown_categories(
-                array(
-                    'name'              => '_customize-dropdown-categories-' . $this->id,
-                    'echo'              => 0,
-                    'show_option_none'  => __( '&mdash; Select &mdash;', 'wp-real-estate' ),
-                    'option_none_value' => '0',
-                    'taxonomy'          => 'product_cat',
-                    'selected'          => $this->value(),
-                )
-            );
- 
-            $dropdown = str_replace( '<select', '<select ' . $this->get_link(), $dropdown );
- 
-            printf(
-                '<label class="customize-control-select"><span class="customize-control-title">%s</span> %s</label>',
-                $this->label,
-                $dropdown
-            );
-        }
-    }
-}    
-if (class_exists('WP_Customize_Control')) {
-	class Wpre_WP_Customize_Upgrade_Control extends WP_Customize_Control {
-        /**
-         * Render the control's content.
-         */
-        public function render_content() {
-             printf(
-                '<label class="customize-control-upgrade"><span class="customize-control-title">%s</span> %s</label>',
-                $this->label,
-                $this->description
-            );
-        }
-    }
-}
-
-/*
-** Function to Automatically Display the Thumbnails, and placeholder if no thumbnail available.
-*/
-add_filter( 'post_thumbnail_html', 'wpre_new_thumb_sizes', 10, 4 );
-function wpre_new_thumb_sizes( $html, $id, $thumb_id, $size ) {
-        // Check to see if we are on a singular view.
-        if ( ! is_singular() ) :
-                // let's check to see if the post has a featured image.
-                if ( ! get_post_thumbnail_id( $id ) ) {
-                        // if we don't have one, create a fallback for just the wpre-pop-thumb thumbnails.
-                        if ( 'wpre-pop-thumb' == $size || 'wpre-thumb' == $size ) {
-                                return  '<img src="' . get_template_directory_uri() . '/assets/images/placeholder2.jpg" />';
-                        }
-                        if ( 'wpre-sq-thumb' == $size ) {
-                                return  '<img src="' . get_template_directory_uri() . '/assets/images/placeholder-sq.jpg" />';
-                        }
-                        // simple message if there is no thumbnail at all.                        
-                        return '<h2>'.__('I do not have an image','wp-real-estate').'</h2>';
-                }
-        endif;
-        // return our set featured image.
-        return wp_get_attachment_image( $thumb_id, $size );
-}
-
-/*
-** Function to Use the Property search page, when the Property Search is used.
-*/
-function wpre_search_tmpl( $template ) {
-  if( isset($_REQUEST['search']) == 'property' ) {
-        require(get_template_directory().'/property-search-results.php');
-        die();
-    }
-  return $template;
-}
-add_action('init', 'wpre_search_tmpl');
-
-
-/*
-** Function to Trim the length of Excerpt and More
-*/
-function wpre_excerpt_length( $length ) {
-	return 56;
-}
-add_filter( 'excerpt_length', 'wpre_excerpt_length', 999 );
-
-function wpre_excerpt_more( $more ) {
-	return '...';
-}
-add_filter( 'excerpt_more', 'wpre_excerpt_more' );
 
 
 /*

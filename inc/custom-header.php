@@ -24,7 +24,7 @@
  */
 function wpre_custom_header_setup() {
 	add_theme_support( 'custom-header', apply_filters( 'wpre_custom_header_args', array(
-		'default-image'          => '',
+		'default-image'          => get_template_directory_uri().'/assets/images/header.jpg',
 		'default-text-color'     => '#ffffff',
 		'height'				 => 400,
 		'width'					 => 1200,
@@ -34,6 +34,14 @@ function wpre_custom_header_setup() {
 		'admin-head-callback'    => 'wpre_admin_header_style',
 		'admin-preview-callback' => 'wpre_admin_header_image',
 	) ) );
+    register_default_headers( array(
+            'default-image'    => array(
+                'url'            => '%s/assets/images/header.jpg',
+                'thumbnail_url'    => '%s/assets/images/header.jpg',
+                'description'    => __('Default Header Image', 'wp-real-estate')
+            )
+        )
+    );
 }
 add_action( 'after_setup_theme', 'wpre_custom_header_setup' );
 

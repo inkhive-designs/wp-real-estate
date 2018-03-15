@@ -16,7 +16,7 @@ function wpre_custom_css_mods() {
 	endif;
 	
 	if ( get_theme_mod('header_textcolor','#000') ) :
-		$cssmods .= "#masthead h1.site-title a { color: ".esc_html( get_theme_mod('header_textcolor', '#000') )."; }";
+		$cssmods .= "#masthead h1.site-title a { color: #".esc_html( get_theme_mod('header_textcolor', '#000') )."; }";
 	endif;
 	
 	
