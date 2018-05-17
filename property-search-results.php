@@ -28,7 +28,7 @@ get_header(); ?>
 					array(
 						'key'     => 'property_bedrooms',
 						'value'   => $_bed,
-						'type'    => 'numeric',
+						'type'    => 'NUMERIC',
 						'compare' => '>=',
 					),
 					array(
@@ -39,14 +39,14 @@ get_header(); ?>
 					array(
 						'key'     => 'property_bathrooms',
 						'value'   => $_bath,
-						'type'    => 'numeric',
+						'type'    => 'NUMERIC',
 						'compare' => '>=',
 					),
 					array(
 						'key'     => 'property_cost',
 						'value'   => $_cmax,
-						'type'    => 'numeric',
-						'compare' => '<',
+						'type'    => 'NUMERIC',
+						'compare' => '<=',
 					),
 				),
 		    );

@@ -123,3 +123,4 @@ endif;
 ** Load Plugin Recommender
 */
 require get_template_directory() . '/framework/recommended-plugins/customizer-notify.php';
+

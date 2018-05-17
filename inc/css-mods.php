@@ -26,12 +26,8 @@ function wpre_custom_css_mods() {
 	//Check Jetpack is active
 	if ( class_exists( 'Jetpack' ) && Jetpack::is_module_active( 'infinite-scroll' ) )
 		$cssmods .= '.pagination { display: none; }';
-	
-	if ( get_theme_mod('wpre_hide_title_tagline') ) :
-		$cssmods .= "#masthead .site-branding #text-title-desc { display: none; }";
-	endif;
-	
-	if ( !display_header_text() ) :
+		
+	if ( !display_header_text() && isset($_GET['search'] ) ) :
 		$cssmods .= "#masthead .site-branding #text-title-desc { display: none; }";
 	endif;
 	
