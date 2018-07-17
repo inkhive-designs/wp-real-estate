@@ -27,7 +27,8 @@ function wpre_customize_register_social($wp_customize) {
         $wp_customize->add_setting(
             'wpre_social_'.$x, array(
             'sanitize_callback' => 'wpre_sanitize_social',
-            'default' => 'none'
+            'default' => 'none',
+            'transport' => 'postMessage'
         ));
 
         $wp_customize->add_control( 'wpre_social_'.$x, array(

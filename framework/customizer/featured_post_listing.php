@@ -17,7 +17,10 @@ function wpre_customize_register_fp_listing($wp_customize) {
 
     $wp_customize->add_setting(
         'wpre_fn_enable',
-        array( 'sanitize_callback' => 'wpre_sanitize_checkbox' )
+        array(
+            'sanitize_callback' => 'wpre_sanitize_checkbox',
+            'transport'     => 'postMessage',
+        )
     );
 
     $wp_customize->add_control(
@@ -33,7 +36,10 @@ function wpre_customize_register_fp_listing($wp_customize) {
 
     $wp_customize->add_setting(
         'wpre_fn_title',
-        array( 'sanitize_callback' => 'sanitize_text_field' )
+        array(
+            'sanitize_callback' => 'sanitize_text_field',
+            'transport'     => 'postMessage',
+        )
     );
 
     $wp_customize->add_control(

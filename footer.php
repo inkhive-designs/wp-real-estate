@@ -15,8 +15,9 @@
 	<footer id="colophon" class="site-footer" role="contentinfo">
 		<div class="site-info container">
 			<?php printf( __( 'Powered by %1$s.', 'wp-real-estate' ), '<a href="'.esc_url("https://inkhive.com/product/wp-real-estate/").'" rel="nofollow">WP Real Estate Theme</a>' ); ?>
-			<span class="sep"></span>
-			<?php echo ( get_theme_mod('wpre_footer_text') == '' ) ? ('&copy; '.date_i18n(__('Y','wp-real-estate')).' '.get_bloginfo('name').__('. All Rights Reserved. ','wp-real-estate')) : esc_html( get_theme_mod('wpre_footer_text') ); ?>
+			<span class="sep">
+                			<?php echo ( get_theme_mod('wpre_footer_text') == '' ) ? ('&copy; '.date_i18n(__('Y','wp-real-estate')).' '.get_bloginfo('name').__('. All Rights Reserved. ','wp-real-estate')) : esc_html( get_theme_mod('wpre_footer_text') ); ?>
+            </span>
 		</div><!-- .site-info -->
 	</footer><!-- #colophon -->
 	

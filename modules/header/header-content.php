@@ -1,8 +1,8 @@
-<?php if (has_header_image() & is_front_page() && (get_theme_mod('wpre_hinfo_enable', true))) : ?>
+<?php if (has_header_image() & is_front_page()) : ?>
     <div id="header-image" class="container">
         <img src="<?php header_image(); ?>" width="100%">
 
-        <?php if (get_theme_mod('wpre_hinfo_enable')) :
+        <?php if (get_theme_mod('wpre_hinfo_enable') && (get_theme_mod('wpre_header_content_page') != '' )) :
             $pageid = get_theme_mod('wpre_header_content_page'); ?>
             <div class="header-information">
                 <div class="header-info-inner">

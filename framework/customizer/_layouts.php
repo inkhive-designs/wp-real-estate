@@ -152,7 +152,8 @@ function wpre_customize_register_layouts($wp_customize) {
         'wpre_footer_text',
         array(
             'default'		=> '',
-            'sanitize_callback'	=> 'sanitize_text_field'
+            'sanitize_callback'	=> 'sanitize_text_field',
+            'transport'     => 'postMessage'
         )
     );
 

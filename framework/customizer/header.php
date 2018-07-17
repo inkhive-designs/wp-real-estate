@@ -8,7 +8,7 @@ function wpre_customize_register_header_settings($wp_customize) {
         'wpre_header_panel',
         array(
             'title'     => __('Header Settings','wp-real-estate'),
-            'priority'  => 34,
+            'priority'  => 30,
         )
     );
 
@@ -23,13 +23,17 @@ function wpre_customize_register_header_settings($wp_customize) {
 
     $wp_customize->add_setting(
         'wpre_hinfo_enable',
-        array( 'sanitize_callback' => 'wpre_sanitize_checkbox' )
+        array(
+            'sanitize_callback' => 'wpre_sanitize_checkbox',
+            'transport'     => 'postMessage',
+        )
     );
 
     $wp_customize->add_control(
         'wpre_hinfo_enable', array(
             'settings' => 'wpre_hinfo_enable',
             'label'    => __( 'Enable Header Content', 'wp-real-estate' ),
+            'description' => __('If you enable header content, It will be displayed over the header image also make sure you have added a header image.'),
             'section'  => 'wpre_header_content',
             'type'     => 'checkbox',
             'default'  => false
@@ -55,7 +59,11 @@ function wpre_customize_register_header_settings($wp_customize) {
 
     $wp_customize->add_setting(
         'wpre_header_btn',
-        array( 'default'=> __('Learn More','wp-real-estate'), 'sanitize_callback' => 'sanitize_text_field' )
+        array(
+            'default'=> __('Learn More','wp-real-estate'),
+            'sanitize_callback' => 'sanitize_text_field',
+            'transport'     => 'postMessage'
+        )
     );
 
     $wp_customize->add_control(

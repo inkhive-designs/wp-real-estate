@@ -17,7 +17,7 @@ function wpre_scripts() {
 
     wp_enqueue_style( 'hover-css', get_template_directory_uri() . '/assets/css/hover.min.css' );
 
-    wp_enqueue_style( 'wpre-main-theme-style', get_template_directory_uri() . '/assets/theme-styles/css/'.get_theme_mod('wpre_skin', 'default').'.css' );
+    wp_enqueue_style( 'wpre-main-theme-style', get_template_directory_uri() . '/assets/theme-styles/css/'.get_theme_mod('wpre_skins', 'default').'.css', array(), null );
 
     wp_enqueue_script( 'wpre-navigation', get_template_directory_uri() . '/js/navigation.js', array(), '20120206', true );
 

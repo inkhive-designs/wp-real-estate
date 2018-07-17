@@ -12,7 +12,10 @@ function wpre_customize_register_fpages($wp_customize) {
 
     $wp_customize->add_setting(
         'wpre_fpages_enable',
-        array( 'sanitize_callback' => 'wpre_sanitize_checkbox' )
+        array(
+            'sanitize_callback' => 'wpre_sanitize_checkbox',
+            'transport'      => 'postMessage',
+        )
     );
 
     $wp_customize->add_control(
