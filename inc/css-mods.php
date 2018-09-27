@@ -15,21 +15,23 @@ function wpre_custom_css_mods() {
 		$cssmods .= "body { font-family: ".esc_html( get_theme_mod('wpre_body_font','Source Serif Pro') )."; }";
 	endif;
 	
-	if ( get_theme_mod('header_textcolor','#000') ) :
-		$cssmods .= "#masthead h1.site-title a { color: #".esc_html( get_theme_mod('header_textcolor', '#000') )."; }";
+	if ( get_theme_mod('wpre_site_titlecolor','#000') ) :
+		$cssmods .= "#masthead h1.site-title a { color: ".esc_html( get_theme_mod('wpre_site_titlecolor', '#000') )."; }";
 	endif;
 	
 	
 	if ( get_theme_mod('wpre_header_desccolor','#777777') ) :
 		$cssmods .= ".site-description { color: ".esc_html( get_theme_mod('wpre_header_desccolor','#777777') )."; }";
 	endif;
+
+
+    if ( get_theme_mod('wpre_hide_title_tagline') ) :
+        $cssmods .= "#masthead .site-branding #text-title-desc { display: none; }";
+    endif;
+
 	//Check Jetpack is active
 	if ( class_exists( 'Jetpack' ) && Jetpack::is_module_active( 'infinite-scroll' ) )
 		$cssmods .= '.pagination { display: none; }';
-		
-	if ( !display_header_text() && isset($_GET['search'] ) ) :
-		$cssmods .= "#masthead .site-branding #text-title-desc { display: none; }";
-	endif;
 	
 	if ( get_theme_mod('wpre_logo_resize') ) :
 		$val = esc_html( get_theme_mod('wpre_logo_resize') )/100;

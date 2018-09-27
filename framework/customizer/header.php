@@ -3,12 +3,30 @@ function wpre_customize_register_header_settings($wp_customize) {
     //Logo Settings
     $wp_customize->get_section( 'title_tagline' )->title = __( 'Title, Tagline & Logo', 'wp-real-estate' );
     $wp_customize->get_section( 'title_tagline' )->panel = 'wpre_header_panel';
+    $wp_customize->remove_control('display_header_text');
 
     $wp_customize->add_panel(
         'wpre_header_panel',
         array(
             'title'     => __('Header Settings','wp-real-estate'),
             'priority'  => 30,
+        )
+    );
+
+    $wp_customize->add_setting(
+        'wpre_hide_title_tagline',
+        array(
+            'sanitize_callback' => 'wpre_sanitize_checkbox',
+            'transport'     => 'postMessage',
+        )
+    );
+
+    $wp_customize->add_control(
+        'wpre_hide_title_tagline', array(
+            'settings' => 'wpre_hide_title_tagline',
+            'label'    => __( 'Hide Title and Tagline.', 'wp-real-estate' ),
+            'section'  => 'title_tagline',
+            'type'     => 'checkbox',
         )
     );
 

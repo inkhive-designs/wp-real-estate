@@ -6,7 +6,6 @@ function wpre_customize_register_gfonts($wp_customize) {
         array(
             'title'     => __('Google Web Fonts','wp-real-estate'),
             'priority'  => 41,
-            'description' => __('Defaults: Lato, Open Sans.','wp-real-estate'),
             'panel' => 'wpre_design_panel'
         )
     );

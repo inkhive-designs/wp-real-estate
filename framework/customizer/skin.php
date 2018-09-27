@@ -1,12 +1,27 @@
 <?php
 function wpre_customize_register_skin($wp_customize) {
-    //Replace Header Text Color with, separate colors for Title and Description
-    $wp_customize->get_setting('header_textcolor')->default = '#000';
-    $wp_customize->get_control('header_textcolor')->label =  __('Site Title Color','wp-real-estate');
-    $wp_customize->get_setting('header_textcolor')->transport = 'postMessage';
-    $wp_customize->get_setting('background_color')->transport = 'postMessage';
     $wp_customize->get_section('colors')->title =  __('Theme Skins & Colors','wp-real-estate');
     $wp_customize->get_section('colors')->panel =  'wpre_design_panel';
+    //Replace Header Text Color with, separate colors for Title and Description
+
+    //$wp_customize->remove_section('colors');
+    $wp_customize->remove_setting('header_textcolor');
+
+    $wp_customize->add_setting('wpre_site_titlecolor', array(
+        'default'     => '#000',
+        'sanitize_callback' => 'sanitize_hex_color',
+        'transport' => 'postMessage'
+    ));
+
+    $wp_customize->add_control(new WP_Customize_Color_Control(
+            $wp_customize,
+            'wpre_site_titlecolor', array(
+            'label' => __('Site Title Color','wp-real-estate'),
+            'section' => 'colors',
+            'settings' => 'wpre_site_titlecolor',
+            'type' => 'color'
+        ) )
+    );
 
     $wp_customize->add_setting('wpre_header_desccolor', array(
         'default'     => '#777777',
@@ -23,7 +38,6 @@ function wpre_customize_register_skin($wp_customize) {
             'type' => 'color'
         ) )
     );
-
     //Select the Default Theme Skin
     $wp_customize->add_setting(
         'wpre_skins',

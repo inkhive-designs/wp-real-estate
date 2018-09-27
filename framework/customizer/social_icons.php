@@ -14,7 +14,7 @@ function wpre_customize_register_social($wp_customize) {
         'google-plus' => __('Google Plus','wp-real-estate'),
         'instagram' => __('Instagram','wp-real-estate'),
         'rss' => __('RSS Feeds','wp-real-estate'),
-        'vine' => __('Vine','wp-real-estate'),
+        'pinterest-p' => __('Pinterest','wp-real-estate'),
         'vimeo-square' => __('Vimeo','wp-real-estate'),
         'youtube' => __('Youtube','wp-real-estate'),
         'flickr' => __('Flickr','wp-real-estate'),
@@ -62,7 +62,7 @@ function wpre_customize_register_social($wp_customize) {
             'google-plus',
             'instagram',
             'rss',
-            'vine',
+            'pinterest-p',
             'vimeo-square',
             'youtube',
             'flickr'

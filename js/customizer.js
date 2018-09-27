@@ -18,30 +18,21 @@
 	} );
 
     //Site Identity
-    // Header text color.
-    wp.customize( 'header_textcolor', function( value ) {
-        value.bind( function( to ) {
-            if ( 'blank' === to ) {
-                $( '#text-title-desc' ).css({
-                    clip: 'rect(1px, 1px, 1px, 1px)',
-                    position: 'absolute'
-                });
-                // Add class for different logo styles if title and description are hidden.
-                $( 'body' ).addClass( 'title-tagline-hidden' );
-            } else {
 
-                $( '#text-title-desc' ).css({
-                    clip: 'auto',
-                    position: 'relative'
-                });
-                $( '.site-branding a' ).css({
-                    color: to
-                });
-                // Add class for different logo styles if title and description are visible.
-                $( 'body' ).removeClass( 'title-tagline-hidden' );
-            }
+    // Header text color.
+    wp.customize( 'wpre_hide_title_tagline', function ( value ) {
+        value.bind( function ( to ) {
+            $( '#text-title-desc' ).toggle();
         });
-    });
+    } );
+
+    //Design & Layouts
+    //Colors
+    wp.customize( 'wpre_site_titlecolor', function( value ) {
+        value.bind( function( to ) {
+            $( '.site-title a' ).css( 'color', to );
+        } );
+    } );
 
     wp.customize( 'wpre_header_desccolor', function( value ) {
         value.bind( function( to ) {

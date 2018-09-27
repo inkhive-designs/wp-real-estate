@@ -50,9 +50,9 @@ function wpre_customize_register_misc_scripts($wp_customize) {
             array(
                 'description'	=> '<a class="wpre-important-links" href="https://inkhive.com/contact-us/" target="_blank">'.__('InkHive Support Forum', 'wp-real-estate').'</a>
                                     <a class="wpre-important-links" href="https://inkhive.com/documentation/wp-real-estate" target="_blank">'.__('WP Real Estate Documentation', 'wp-real-estate').'</a>
-                                    <a class="wpre-important-links" href="https://demo.inkhive.com/wpre-plus/" target="_blank">'.__('WP Real Estate Plus Live Demo', 'wp-real-estate').'</a>
+                                    <a class="wpre-important-links" href="https://demo.inkhive.com/wp-real-estate-pro/" target="_blank">'.__('WP Real Estate Plus Live Demo', 'wp-real-estate').'</a>
                                     <a class="wpre-important-links" href="https://www.facebook.com/inkhivethemes/" target="_blank">'.__('We Love Our Facebook Fans', 'wp-real-estate').'</a>
-                                    <a class="wpre-important-links" href="https://wordpress.org/support/theme/wpre/reviews" target="_blank">'.__('Review WP Real Estate on WordPress', 'wp-real-estate').'</a>',
+                                    <a class="wpre-important-links" href="https://wordpress.org/support/theme/wp-real-estate/reviews" target="_blank">'.__('Review WP Real Estate on WordPress', 'wp-real-estate').'</a>',
                 'section' => 'wpre_sec_pro',
                 'settings' => 'wpre_pro',
             )
